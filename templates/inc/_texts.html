@@ -1,0 +1,14 @@
+{% for category in categories %}
+<div class="text_link_box">
+    <p class="text_link_title">{{ category.name_of_category }}</p>
+    {% for text in texts %}
+        {% if text.category == category %}
+            {% if current_text == text %}
+                <a href="#" class="text_link_item text_link_item_active">{{ text.title }}</a>
+            {% else %}
+                <a href="/text/{{text.slug}}/" class="text_link_item">{{text.title}}</a>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</div>
+{% endfor %}

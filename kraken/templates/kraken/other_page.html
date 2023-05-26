@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}{{ page_info.title }}{% endblock %}
+
+{% block content %}
+{% include 'inc/_review_top.html' %}
+<div class="about">
+    <div class="container">
+        <div class="about_wrap">
+            {% autoescape on %}
+            {{ page_info.content|safe }}
+            {% endautoescape %}
+        </div>
+    </div>
+</div>
+{% endblock %}

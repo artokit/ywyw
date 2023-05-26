@@ -1,0 +1,6 @@
+{% for obj in other_news %}
+    <div class="post__sidebar-item">
+        <a href="/news/{{ obj.uuid }}" class="post__sidebar-link">{{ obj.name }}</a>
+        <p class="post__sidebar-data">{{ obj.date|date:"Y-m-d" }}</p>
+    </div>
+{% endfor %}

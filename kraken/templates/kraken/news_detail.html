@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Новости :: {{ news.name }}{% endblock %}
+{% block content %}
+
+<section class="post">
+    <div class="container">
+        <div class="post__wrap">
+            <div class="post__sidebar">
+                <p class="post__sidebar-title">Другие новости</p>
+                {% include 'inc/_other_news.html' %}
+            </div>
+            <div class="post__item">
+                <h1 class="post__item-title">{{ news.name }}</h1>
+                <p class="post__item-data">{{ news.date|date:"Y-m-d" }}</p>
+                <div class="post__item-output">
+                    {% autoescape on %}
+                        {{ news.content|safe }}
+                    {% endautoescape %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

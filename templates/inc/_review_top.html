@@ -1,0 +1,42 @@
+{% load kraken_extras %}
+<div class="shop_main review_top">
+    <div class="container">
+        <div class="shop_panel">
+            <div class="shop_panel_info">
+                <div class="shop_panel_img">
+                    <img src="{{ shop.photo.url }}" alt="shop" loading="lazy">
+                </div>
+                <div class="shop_panel_title">
+                    <h1 class="shop_title">{{ shop.name }}</h1>
+                    <div class="shop_panel_rait">
+                        <div class="shop_panel_star">
+                            {% draw_stars summary %}
+                        </div>
+                    </div>
+                    <p class="shop_rait_text"><span>{{ shop.deals_count }}</span> сделок</p>
+                </div>
+            </div>
+        </div>
+        <div class="shop_nav">
+            <input type="checkbox" id="shop_nav_box">
+            <label for="shop_nav_box" class="shop_btn_call">
+                Меню магазина:
+            </label>
+            <div class="shop_nav_box">
+                {% for title, url in pages.items %}
+                    {% if current_page == title %}
+                        <a href="{{ url }}" class="active">{{ title }}</a>
+                    {% else %}
+                        <a href="{{ url }}" class="non-active">{{ title }}</a>
+                    {% endif %}
+                {% endfor %}
+                <a href="/ticket/shop/{{ shop.uuid }}/" class="shop_nav_letter">
+                    <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.0078 0H1.99219C0.893695 0 0 0.905827 0 2.01923V3.68493L7.31103 9.19679C7.6666 9.46484 8.0833 9.59888 8.5 9.59888C8.9167 9.59888 9.3334 9.46488 9.68897 9.19679L17 3.68493V2.01923C17 0.905827 16.1063 0 15.0078 0ZM15.6719 3.00852L8.89635 8.11663C8.65928 8.29537 8.34072 8.29537 8.10369 8.11663L1.32812 3.00852V2.01923C1.32812 1.6481 1.62602 1.34615 1.99219 1.34615H15.0078C15.374 1.34615 15.6719 1.6481 15.6719 2.01923V3.00852ZM15.6719 6.36391L17 5.36264V11.9808C17 13.0942 16.1063 14 15.0078 14H1.99219C0.893695 14 0 13.0942 0 11.9808V5.36264L1.32812 6.36391V11.9808C1.32812 12.3519 1.62602 12.6538 1.99219 12.6538H15.0078C15.374 12.6538 15.6719 12.3519 15.6719 11.9808V6.36391Z" fill="black"></path>
+                    </svg>
+                    Написать продавцу
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

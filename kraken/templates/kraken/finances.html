@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Мой профиль :: Настройки{% endblock %}
+{% block content %}
+    {% include 'inc/_profile_review_top.html' %}
+    <div class="finance">
+        <div class="container">
+            <div class="finance_wrap">
+
+
+
+
+                <p class="finance_title">Мои финансы</p>
+                <p class="finance_price">На вашем счету: <strong>0 ₽ / </strong>
+                    <strong>0.00000000 BTC</strong></p>
+                <p class="finance_text">Идентификатор биткоин кошелька является вашим уникальным идентификатором для отправки и получения денежных средств.
+                    Он полностью уникален для вас, и именно его вам стоит использовать для пополнения баланса.
+                    Или вы можете приобрести BTC при помощи обычной банковской карты известных платежных систем у нас на сайте в специально отведенном разделе — «Обмен».</p>
+                <form action="/exchange/" method="get" class="finance_form">
+                    <div class="finance_form_box">
+                        <p class="finance_label">Для пополнения баланса переведите BTC на адрес:</p>
+                        <input type="text" class="finance_input" placeholder="BTC" name="wallet" value="bc1qcp3szqphqdf7ay39ugqwhr8aq5c9hlys6a725e">
+                    </div>
+                    <div class="finance_form_box">
+                        <p class="finance_label">Или обменяйте в любом из наших обменников:</p>
+                        <div class="finance_form_box_btns">
+                            <button type="submit" class="finance_btn">Купить Bitcoin</button>
+                            <a href="/deposit-coupons" class="finance_btn empty">Активировать купон</a>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="decor_bottom_wrap">
+                <div class="decor_bottom_table">
+                    <div class="decor_table_title">
+                        <p>Дата</p>
+                        <p>Сумма</p>
+                        <p>Примечание</p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

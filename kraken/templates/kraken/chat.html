@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Сообщения{% endblock %}
+
+{% block content %}
+<div class="messenger empty">
+    <div class="container">
+
+        <div class="messenger_wrap">
+            <div class="messenger_left">
+                <form action="/chat/" class="messenger_search_wrap" method="get">
+                    <input type="text" placeholder="Поиск" name="q" value="">
+                    <button type="submit">Найти</button>
+                </form>
+                <div class="messenger_user_wrap chat_rooms">
+
+
+
+
+                </div>
+            </div>
+            <div class="messenger_right messenger_empty_wrap">
+                <div class="messenger_empty">
+                    <p>Выберите чат для начала общения</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

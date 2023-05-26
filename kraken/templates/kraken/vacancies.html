@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Вакансии{% endblock %}
+
+{% block content %}
+{% include 'inc/_review_top.html' %}
+<div class="vacancies">
+    <div class="container">
+        <div class="shop_product">
+            <div class="shop_product_wrap">
+                {% for product in products %}
+                    <a href="/shop/item/{{product.uuid}}/" class="product_item">
+                        <div class="product_item_img">
+                            <img src="{{ product.photos.all.0.photo.url }}" alt="product" loading="lazy" height="200" width="200">
+                        </div>
+                        <p class="product_title">{{ product.title }}</p>
+                        <div class="product_bottom">
+                            <p class="product_price">от <strong>1000.00 руб.</strong> / 1.00г</p>
+                            <div class="product_star">
+                                <span class="product_star_col">5.0</span>
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.8355 4.95918C13.7229 4.61346 13.4244 4.36302 13.0646 4.31056L9.42115 3.7819L7.79162 0.488546C7.47004 -0.162849 6.40257 -0.162849 6.081 0.488546L4.45146 3.7819L0.81667 4.31056C0.457041 4.36287 0.158447 4.61434 0.0467669 4.95918C-0.0657913 5.30489 0.028617 5.68305 0.289155 5.93539L2.92424 8.49261L2.3032 12.1118C2.24216 12.4689 2.38912 12.8309 2.68288 13.0442C2.97767 13.2566 3.36687 13.2843 3.68844 13.1156L6.93594 11.4061L10.1931 13.1156C10.3324 13.189 10.4851 13.2252 10.6367 13.2252C10.8342 13.2252 11.0317 13.1643 11.1997 13.0443C11.4936 12.83 11.6404 12.4691 11.5794 12.112L10.9583 8.49275L13.5934 5.93554C13.8537 5.68392 13.9481 5.30402 13.8355 4.95918Z" fill="#434343"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

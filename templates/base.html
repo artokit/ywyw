@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <script src="{% static '/js/jquery-3.6.0.min.js' %}"></script>
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
+    <link rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <style>
+        .error_panel {
+            margin-top: 4px;
+            color: #842029;
+            background-color: #f8d7da;
+            border-color: #f5c2c7;
+            position: relative;
+            padding: 1rem 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.25rem;
+        }
+
+        .message_panel {
+            margin-top: 4px;
+            color: #FFFFFF;
+            background-color: #0c4128;
+            border-color: #0c4128;
+            position: relative;
+            padding: 1rem 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.25rem;
+        }
+        .visible {
+            display: block;
+        }
+
+        .invisible {
+            display: none;
+        }
+        a.disabled {
+            pointer-events: none;
+        }
+    </style>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+{% include 'inc/_header.html' %}
+
+{% block content %}{% endblock %}
+
+{% include 'inc/_footer.html' %}
+<script src="{% static '/js/main.js' %}"></script>
+<script src="{% static '/js/catalog.js' %}"></script>
+<script src="{% static '/js/select-search.js' %}"></script>
+<script>
+        let REQUEST_STATUS_DELAY = 15000;
+        let requestStatus = () => {
+            $.ajax({
+                url: "/status/get"
+            }).done(function (res) {
+                if (res === "LOGGED OUT") {
+                    window.location.href = "/";
+                }
+            });
+            setTimeout(requestStatus, REQUEST_STATUS_DELAY);
+        }
+        $(document).ready(function () {
+            setTimeout(requestStatus, REQUEST_STATUS_DELAY);
+        })
+</script>
+</body></html>

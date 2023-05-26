@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Мой профиль :: Заказы{% endblock %}
+{% block content %}
+    {% include 'inc/_profile_review_top.html' %}
+    <div class="finance my_order">
+        <div class="container">
+            <div class="my_order">
+                <h1 class="my_order_title">Мои заказы</h1>
+                <div class="my_order_nav">
+                    <input type="checkbox" id="my_order_panel">
+                    <label for="my_order_panel" class="order_btn_call">
+                        Мои заказы:
+                        <span>Ожидают внимания – 0</span>
+
+
+
+                    </label>
+                    <div class="my_order_panel">
+                        <a href="?t=1" class="active_link">Ожидают внимания – 0</a>
+                        <a href="?t=2">Обрабатываются продавцом - 0</a>
+                        <a href="?t=3">Завершенные - 0</a>
+                        <a href="?t=4">Отмененные - 0</a>
+                    </div>
+                </div>
+
+                <div class="my_order_table">
+                    <div class="my_table_title">
+                        <p>Товар/Услуга</p>
+                        <p>Дата</p>
+                        <p>Цена</p>
+                        <p>Кол-во</p>
+                        <p>Тип</p>
+                        <p>Статус</p>
+                    </div>
+                    <div class="my_table_item_wrap">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

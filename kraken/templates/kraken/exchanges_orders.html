@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block title %}Мои заявки{% endblock %}
+{% block content %}
+<div class="shop_main review_top profile-header">
+        <div class="container">
+            <div class="shop_panel">
+                <div class="shop_panel_info">
+                    <div class="shop_panel_img">
+                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_615_20654)">
+                                <path d="M34.4741 21.7335C32.1368 31.1085 22.6415 36.8139 13.2654 34.4761C3.89321 32.1388 -1.81229 22.643 0.526096 13.2685C2.86231 3.89242 12.3576 -1.81363 21.731 0.523672C31.1065 2.86102 36.8114 12.3579 34.4741 21.7335Z" fill="black"></path>
+                                <path d="M11.7443 20.4471C11.6491 20.6833 11.408 21.0377 10.8644 20.9032C10.8836 20.9311 9.4688 20.5548 9.4688 20.5548L8.51562 22.7527L11.0142 23.3756C11.4791 23.4921 11.9346 23.614 12.3831 23.7289L11.5884 26.9193L13.5063 27.3978L14.2933 24.2413C14.8172 24.3834 15.3257 24.5147 15.8234 24.6383L15.0392 27.78L16.9593 28.2586L17.7538 25.0741C21.028 25.6937 23.4899 25.4438 24.5263 22.4825C25.3614 20.0982 24.4847 18.7228 22.7621 17.8259C24.0166 17.5366 24.9616 16.7114 25.2137 15.0068C25.562 12.6782 23.7891 11.4264 21.3648 10.5914L22.1512 7.43699L20.2311 6.95848L19.4655 10.0297C18.9608 9.90392 18.4423 9.78524 17.9272 9.66765L18.6982 6.57617L16.7793 6.09766L15.9923 9.2509C15.5745 9.15575 15.1644 9.06165 14.7662 8.96269L14.7684 8.95283L12.1205 8.29167L11.6097 10.3424C11.6097 10.3424 13.0343 10.6689 13.0042 10.6891C13.7819 10.8833 13.9224 11.3979 13.8989 11.8059L11.7443 20.4471ZM20.8267 21.1586C20.2334 23.5429 16.2188 22.2539 14.9172 21.9307L15.9716 17.704C17.2731 18.0288 21.4468 18.6719 20.8267 21.1586ZM21.4206 14.9724C20.8792 17.1413 17.5378 16.0393 16.4539 15.7692L17.4099 11.9356C18.4937 12.2057 21.9844 12.71 21.4206 14.9724Z" fill="white"></path>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_615_20654">
+                                    <rect width="35" height="35" fill="white"></rect>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="shop_panel_title">
+                        <p class="shop_title">Обмен</p>
+                    </div>
+                </div>
+            </div>
+            <div class="shop_nav">
+                <input type="checkbox" id="shop_nav_box">
+                <label for="shop_nav_box" class="shop_btn_call">
+                    Обмен: <span>Обмен</span>
+                </label>
+                <div class="shop_nav_box">
+                    <a href="/exchange" class="passive">Обмен</a>
+                    <a href="/exchange/my-orders/" class="active">Мои заявки</a>
+
+                    <a href="/ticket/admin" class="shop_nav_letter">
+                        <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.0078 0H1.99219C0.893695 0 0 0.905827 0 2.01923V3.68493L7.31103 9.19679C7.6666 9.46484 8.0833 9.59888 8.5 9.59888C8.9167 9.59888 9.3334 9.46488 9.68897 9.19679L17 3.68493V2.01923C17 0.905827 16.1063 0 15.0078 0ZM15.6719 3.00852L8.89635 8.11663C8.65928 8.29537 8.34072 8.29537 8.10369 8.11663L1.32812 3.00852V2.01923C1.32812 1.6481 1.62602 1.34615 1.99219 1.34615H15.0078C15.374 1.34615 15.6719 1.6481 15.6719 2.01923V3.00852ZM15.6719 6.36391L17 5.36264V11.9808C17 13.0942 16.1063 14 15.0078 14H1.99219C0.893695 14 0 13.0942 0 11.9808V5.36264L1.32812 6.36391V11.9808C1.32812 12.3519 1.62602 12.6538 1.99219 12.6538H15.0078C15.374 12.6538 15.6719 12.3519 15.6719 11.9808V6.36391Z" fill="black"></path>
+                        </svg>
+                        Создать тикет
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="finance my_order">
+    <div class="container">
+        <div class="my_order">
+            <h1 class="my_order_title">Мои заявки</h1>
+            <div class="my_order_nav">
+                <input type="checkbox" id="my_order_panel">
+                <label for="my_order_panel" class="order_btn_call">
+                    Мои заказы: <span>Ожидают внимания</span>
+                </label>
+                <div class="my_order_panel">
+                    <a href="?type=wait" class="non-active_link">Ожидают внимания – 0</a>
+                    <a href="?type=completed" class="non-active link">Завершенные - 0</a>
+                    <a href="?type=canceled" class="non-active_link">Отмененные - 0</a>
+                </div>
+            </div>
+            <div class="my_order_table my_app_table">
+                <div class="my_table_title">
+                    <p>Обменник</p>
+                    <p>Дата</p>
+                    <p>Курс</p>
+                    <p>Сумма</p>
+                    <p>Статус</p>
+                </div>
+                <div class="my_table_item_wrap">
+                    <div class="empty-row">
+                        Нет данных
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

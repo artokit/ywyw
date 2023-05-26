@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+{% load mathfilters %}
+{% load kraken_extras %}
+{% block title %}{{ product.title }}{% endblock %}
+
+{% block content %}
+{% include 'inc/_review_top.html' %}
+
+<div class="item">
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="/shop/catalog/{{ product.shop.uuid }}/">{{ product.shop.name }}</a>
+            <span>{{ product.title }}</span>
+        </div>
+        <div class="item_slider_wrap">
+            <div class="item_slider">
+                <input type="radio" id="img_label_7d290ac7-925f-4c2a-9c9f-2745c95f9ca8" class="slider_input" name="img" checked="checked">
+                <div class="item_slider_left">
+                    {% for ph in product.photos.all %}
+                    <label for="img_label_{{ph.photo.url}}">
+                        <img src="{{ ph.photo.url }}" alt="item">
+                    </label>
+                    {% endfor %}
+                </div>
+                <div class="item_slider_right">
+                    <div class="item_img_main">
+                        <img src="{{ product.photos.all.0.photo.url }}" alt="item">
+                    </div>
+                </div>
+            </div>
+            <div class="item_slider_info">
+                <p class="slider_info_type">{{ product.type_of_product }}</p>
+                <p class="slider_info_title">{{ product.title }}</p>
+                <p class="slider_info_text">
+                    {% autoescape on %}
+                    {{ product.description|safe }}
+                    {% endautoescape %}
+                </p>
+            </div>
+        </div>
+        <div class="item_location">
+            <div class="item_location_panel">
+                <input type="checkbox" id="item_location_left">
+                <label for="item_location_left" class="item_btn_call">
+                    Тип:
+                    <span> Предзаказ</span>
+                </label>
+                <div class="item_location_left">
+                    <a href="./?type=instant" class="passive_link">Моментальный</a>
+                    <a href="./?type=pre-order" class="passive_link">Предзаказ</a>
+                </div>
+                <form action="#" class="item_location_right">
+                    <input type="hidden" name="type" value="pre-order">
+                    <div class="review_panel_box">
+                        <div class="review_panel_select">
+                            <div class="filter-select__box">
+                                <select class="filter-select" name="city" id="district-select">
+                                    <option value="none" selected="selected">Любой</option>
+                                    <option value="a55cc697-96a8-4c5e-abe0-97faea6de786">Аксай (Ростовская область)</option>
+                                    <option value="e483dfeb-ead0-4346-bd40-0fbcabd453ff">Анапа</option>
+                                    <option value="38319834-b932-402f-a426-8dceff9f8786">Апрелевка (Московская область)</option>
+                                    <option value="8a06fbb4-70dc-4b72-983f-c3d4457c5534">Арзамас</option>
+                                    <option value="2fa5e540-4942-40eb-9469-8f199d281092">Астрахань (Астраханская область)</option>
+                                    <option value="263566c8-a2fd-4f1f-9b28-3792d0d4d99f">Балашиха</option>
+                                    <option value="825dd2d3-004d-456d-8bf6-27978568cbb1">Батайск</option>
+                                    <option value="1efa9bad-d9a6-4039-b32d-2ea9e8fa402e">Видное (Московская область)</option>
+                                    <option value="2a9e8c05-0b1a-4c75-b8d1-a031beab1da0">Владимир (Владимирская область)</option>
+                                    <option value="be88b456-dff8-431f-938a-0f65f0e2b8d6">Воронеж</option>
+                                    <option value="f127bc7e-cf3b-4023-b9db-34d7d4c51cc7">Выкса</option>
+                                    <option value="34d8295c-be82-419c-b06b-879721394969">Гусь-Хрустальный</option>
+                                    <option value="92ce3d18-17f4-43d3-a208-6e5755ba57dc">Домодедово</option>
+                                    <option value="1fdf871a-7e1f-4043-9d48-8d527b883189">Екатеринбург</option>
+                                    <option value="b473c9d5-2caf-4596-933a-022fd2388b38">Жуковский (Московская область)</option>
+                                    <option value="d2518d5d-d224-49df-b68c-6c06b9cb87b1">Зеленоград (Московская область)</option>
+                                    <option value="f3004e1c-353b-4201-a9fc-20ee777e579a">Ижевск</option>
+                                    <option value="62cfdc94-7222-49cd-ba6c-cdee67da7a5f">Ирбит</option>
+                                    <option value="cf47f6ef-d588-494f-b145-b91d11db45b2">Казань (Республика Татарстан)</option>
+                                    <option value="a032439b-3380-4ee7-8770-f5de08c92519">Калуга  (Калужская область)</option>
+                                    <option value="7c99619c-10d3-4a98-85a7-933db60d5059">Красногорск</option>
+                                    <option value="83fc51fe-70ae-4d1e-b759-efa1c25b53bb">Краснодар</option>
+                                    <option value="e2baa3aa-7ecf-4930-8ff7-ae22f44af96e">Краснознаменск (Московская область)</option>
+                                    <option value="fef154eb-5300-46d7-916e-f60e6a1d193e">Москва</option>
+                                    <option value="b2abaac1-dd3b-42a4-8abc-e1c212d5ec26">Муром</option>
+                                    <option value="bda68fc1-4089-4c88-a058-5142adbe2997">Мытищи (Московская область)</option>
+                                    <option value="69d18d02-94f6-4d97-a490-9079ce129b2c">Наро-Фоминск</option>
+                                    <option value="55a19b3b-e9ef-4405-9e92-6b890f08bd98">Нижний Ломов</option>
+                                    <option value="d5841193-7688-4e53-88bc-bf20defe4d41">Нижний Новгород</option>
+                                    <option value="0bb46176-0291-43fd-8120-e0afd8585f07">Новомосковск</option>
+                                    <option value="59f6af22-6375-4664-a1b7-34392b6b678c">Новосибирск</option>
+                                    <option value="999220c0-4d74-44d7-88e9-9df22764d1a5">Новочеркасск (Ростовская область)</option>
+                                    <option value="7d1a6bea-46b9-4bca-bb01-c0ec1237e20b">Одинцово (Московская область)</option>
+                                    <option value="244db041-c661-4936-aab4-d49f5d9949a6">Оренбург</option>
+                                    <option value="db624c8e-7ee8-4c6c-acc6-e03a2e175579">Пенза (Пензенская область)</option>
+                                    <option value="08769484-bda5-4921-91a1-c3bd98413423">Пермь</option>
+                                    <option value="88f3ba80-9563-4e1b-8b4c-412c3a3a9890">Подольск (Московская область)</option>
+                                    <option value="d63d60b1-c31c-4f76-b2ff-47f04ac4480b">Реутов (Московская область)</option>
+                                    <option value="7e437258-700b-4711-9f72-04378bf788b7">Ростов-на-Дону</option>
+                                    <option value="7d1559a6-885b-4dfe-a34f-f1cc2d090bec">Рязань (Рязанская область)</option>
+                                    <option value="801f82eb-b252-4d1e-be25-3bdb44a636c7">Самара (Самарская область)</option>
+                                    <option value="de7d9ada-f405-4695-abf0-a667e7245127">Санкт-Петербург</option>
+                                    <option value="3a67a610-77a7-4622-a848-0be1b5eeddb8">Саранск</option>
+                                    <option value="c422b413-1da4-41c3-b20f-9b3c774ed746">Саратов</option>
+                                    <option value="a1a8b2bb-47de-4817-87a1-2481e463a387">Саров</option>
+                                    <option value="0019b3ae-cb28-4d40-b35f-2be6b26fe987">Севастополь (Республика Крым)</option>
+                                    <option value="5d1c25eb-a9fe-4664-8bee-c773356f4c41">Симферополь</option>
+                                    <option value="46993437-e734-44ec-97b4-c121c8ab5123">Сочи</option>
+                                    <option value="8a48eb95-4aff-4930-8b72-06bdad1981de">Тверь</option>
+                                    <option value="1ec4f70d-0bce-48f1-a811-5b9ea37aae90">Тула</option>
+                                    <option value="07a30ba3-dbc4-4662-82ec-aa7931953546">Ульяновск</option>
+                                    <option value="851d7c50-2ccd-4fda-bddd-e05b4e5e5bed">Уфа</option>
+                                    <option value="632134a7-fcc0-4f85-9ae8-e701160dc342">Чебоксары (Чувашская Республика)</option>
+                                    <option value="2d1d3158-fb80-49e8-9194-8022e8106b85">Челябинск</option>
+                                    <option value="4f99d7e6-f710-46ea-831b-4ff328a8e294">Ялта (Республика Крым)</option>
+                                    <option value="0e0f3d7d-26ba-44f9-97bc-568aaac7aa63">Ярославль (Ярославская область)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="review_panel_btn">
+                        Показать
+                    </button>
+                </form>
+            </div>
+            <div class="item_location item_location_2">
+                {% for location in locations %}
+                    <div class="item_location_box">
+                        <div class="location_title_box">
+                            <p class="location_box_text">{{ location.location }}</p>
+                            <p class="location_box_city">
+                                {{ location.location_more_info }}
+                            </p>
+                        </div>
+                        <div class="location_type_box">
+                            <p class="location_type_text">{{ location.location_more_info }}</p>
+                        </div>
+                        <div class="location_size_box">
+                            <p class="location_size_text">{{ location.count }}</p>
+                        </div>
+                        <div class="location_price_box">
+                            <p class="location_price_text">{% convert_btc_to_rub location.rub_price %} BTC</p>
+                        </div>
+                        <div class="location_btn_box">
+                            <a href="/exchange/?amount={% float_to_int location.rub_price %}" class="location_btn">
+                                {% float_to_int location.rub_price %} руб.
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="review_item_title_box">
+            <p class="review_item_title">Отзывы</p>
+            <a href="/shop/comments/{{ shop.uuid }}/">смотреть все</a>
+        </div>
+        <div class="review_сomments_wrap">
+            {% for comment in comments %}
+                <div class="review_сomments_box">
+                    <div class="review_comments_item">
+                        <img src="{{ comment.image.url }}" alt="img">
+                        <div class="review_comments_info">
+                            <p class="review_comments_title">
+                                {{ comment.nickname }} <span>{{ product.title }}</span>
+                            </p>
+                            <p class="review_comments_text">
+                                {{ comment.content }}
+                            </p>
+                            <div class="review_comments_star">
+                                {% for star in ""|ljust:comment.star_count %}
+                                    <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.4563 5.26023C14.3413 4.89632 14.0361 4.63269 13.6684 4.57747L9.94476 4.02099L8.27942 0.554298C7.95077 -0.131381 6.85984 -0.131381 6.5312 0.554298L4.86586 4.02099L1.15103 4.57747C0.783493 4.63253 0.478335 4.89724 0.364201 5.26023C0.249169 5.62414 0.345653 6.02219 0.611917 6.28782L3.30492 8.97962L2.67022 12.7893C2.60785 13.1652 2.75803 13.5473 3.05825 13.7708C3.35862 13.9944 3.75832 14.0235 4.08591 13.846L7.40493 12.0464L10.7337 13.846C10.8761 13.9232 11.0321 13.9613 11.1871 13.9613C11.3889 13.9613 11.5907 13.8972 11.7624 13.7709C12.0628 13.5453 12.2128 13.1654 12.1504 12.7895L11.5157 8.97978L14.2087 6.28797C14.4748 6.02312 14.5713 5.62322 14.4563 5.26023Z" fill="#434343"></path>
+                                    </svg>
+                                {% endfor %}
+                                {% with comment.star_count|add:"-5"|abs as not_stars %}
+                                    {% for star in ""|ljust:not_stars %}
+                                        <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14.7725 5.26007C14.6575 4.89616 14.3524 4.63253 13.9847 4.57731L10.2612 4.02099L8.59582 0.554298C8.26718 -0.131381 7.17625 -0.131381 6.8476 0.554298L5.18226 4.02099L1.46743 4.57731C1.09989 4.63253 0.794741 4.89708 0.680607 5.26007C0.565575 5.62398 0.662059 6.02204 0.928323 6.28767L3.62133 8.97947L2.98663 12.7892C2.92425 13.1651 3.07443 13.546 3.37466 13.7706C3.67592 13.9941 4.07472 14.0233 4.40232 13.8458L7.72134 12.0463L11.0501 13.8458C11.1925 13.923 11.3485 13.9612 11.5035 13.9612C11.7053 13.9612 11.9071 13.897 12.0788 13.7708C12.3792 13.5451 12.5292 13.1652 12.4668 12.7893L11.8321 8.97962L14.5251 6.28782C14.7911 6.02296 14.8876 5.62291 14.7725 5.26007ZM10.1022 7.90973C9.87209 8.14029 9.76574 8.47221 9.82034 8.79798L10.2084 11.1259L8.17354 10.0261C8.03218 9.94892 7.87616 9.91078 7.72014 9.91078C7.56412 9.91078 7.4081 9.94892 7.26675 10.0261L5.24269 11.1229L5.63072 8.79813C5.68532 8.47236 5.57911 8.13952 5.3489 7.90988L3.70704 6.26875L5.96998 5.92991C6.2868 5.88284 6.56085 5.6772 6.70325 5.38158L7.72014 3.26317L8.73703 5.38158C8.87944 5.67828 9.15333 5.88284 9.4712 5.92991L11.743 6.26982L10.1022 7.90973Z" fill="#434343"></path>
+                                        </svg>
+                                    {% endfor %}
+                                {% endwith %}
+                                <p class="city">{{ comment.city }}</p>
+                            </div>
+                            <p class="review_comments_data">{{ comment.published }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<script>
+    let arr = document.querySelectorAll('.item_slider_left img');
+    let image_elem = document.querySelector('.item_img_main img');
+    for (let elem of arr) {
+        elem.onclick = () => { image_elem.src = elem.src };
+    }
+</script>
+{% endblock %}

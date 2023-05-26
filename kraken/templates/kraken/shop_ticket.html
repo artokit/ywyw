@@ -1,0 +1,73 @@
+{% load static %}
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <script src="{% static '/js/jquery-3.6.0.min.js' %}"></script>
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
+    <link rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <style>
+        .error_panel {
+            margin-top: 4px;
+            color: #842029;
+            background-color: #f8d7da;
+            border-color: #f5c2c7;
+            position: relative;
+            padding: 1rem 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.25rem;
+        }
+
+        .message_panel {
+            margin-top: 4px;
+            color: #FFFFFF;
+            background-color: #0c4128;
+            border-color: #0c4128;
+            position: relative;
+            padding: 1rem 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.25rem;
+        }
+
+        .visible {
+            display: block;
+        }
+
+        .invisible {
+            display: none;
+        }
+
+        a.disabled {
+            pointer-events: none;
+        }
+
+        .moderator_nick_name {
+            color: red;
+        }
+    </style>
+
+    <title>Создание тикета</title>
+</head>
+<body>
+
+    {% include 'inc/_header.html' %}
+<div class="ticket padding">
+    <div class="container">
+        <form action="./" class="ticket_wrap" method="post">
+            {% csrf_token %}
+            <h1 class="ticket_title">Новое сообщение</h1>
+            <input type="text" class="ticket_input" name="title" placeholder="Тема" required="" value="">
+            <textarea name="message" class="ticket_textarea" placeholder="Ваше сообщение"></textarea>
+            <button type="submit" class="ticket_btn">Отправить</button>
+        </form>
+    </div>
+</div>
+
+</body></html>

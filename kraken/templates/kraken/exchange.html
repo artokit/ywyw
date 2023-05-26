@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block title %}Мои заявки{% endblock %}
+{% block content %}
+{% load kraken_extras %}
+<div class="shop_main review_top profile-header">
+        <div class="container">
+            <div class="shop_panel">
+                <div class="shop_panel_info">
+                    <div class="shop_panel_img">
+                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_615_20654)">
+                                <path d="M34.4741 21.7335C32.1368 31.1085 22.6415 36.8139 13.2654 34.4761C3.89321 32.1388 -1.81229 22.643 0.526096 13.2685C2.86231 3.89242 12.3576 -1.81363 21.731 0.523672C31.1065 2.86102 36.8114 12.3579 34.4741 21.7335Z" fill="black"></path>
+                                <path d="M11.7443 20.4471C11.6491 20.6833 11.408 21.0377 10.8644 20.9032C10.8836 20.9311 9.4688 20.5548 9.4688 20.5548L8.51562 22.7527L11.0142 23.3756C11.4791 23.4921 11.9346 23.614 12.3831 23.7289L11.5884 26.9193L13.5063 27.3978L14.2933 24.2413C14.8172 24.3834 15.3257 24.5147 15.8234 24.6383L15.0392 27.78L16.9593 28.2586L17.7538 25.0741C21.028 25.6937 23.4899 25.4438 24.5263 22.4825C25.3614 20.0982 24.4847 18.7228 22.7621 17.8259C24.0166 17.5366 24.9616 16.7114 25.2137 15.0068C25.562 12.6782 23.7891 11.4264 21.3648 10.5914L22.1512 7.43699L20.2311 6.95848L19.4655 10.0297C18.9608 9.90392 18.4423 9.78524 17.9272 9.66765L18.6982 6.57617L16.7793 6.09766L15.9923 9.2509C15.5745 9.15575 15.1644 9.06165 14.7662 8.96269L14.7684 8.95283L12.1205 8.29167L11.6097 10.3424C11.6097 10.3424 13.0343 10.6689 13.0042 10.6891C13.7819 10.8833 13.9224 11.3979 13.8989 11.8059L11.7443 20.4471ZM20.8267 21.1586C20.2334 23.5429 16.2188 22.2539 14.9172 21.9307L15.9716 17.704C17.2731 18.0288 21.4468 18.6719 20.8267 21.1586ZM21.4206 14.9724C20.8792 17.1413 17.5378 16.0393 16.4539 15.7692L17.4099 11.9356C18.4937 12.2057 21.9844 12.71 21.4206 14.9724Z" fill="white"></path>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_615_20654">
+                                    <rect width="35" height="35" fill="white"></rect>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="shop_panel_title">
+                        <p class="shop_title">Обмен</p>
+                    </div>
+                </div>
+            </div>
+            <div class="shop_nav">
+                <input type="checkbox" id="shop_nav_box">
+                <label for="shop_nav_box" class="shop_btn_call">
+                    Обмен: <span>Обмен</span>
+                </label>
+                <div class="shop_nav_box">
+                    <a href="/exchange" class="active">Обмен</a>
+                    <a href="/exchange/my-orders/" class="passive">Мои заявки</a>
+
+                    <a href="/ticket/admin" class="shop_nav_letter">
+                        <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.0078 0H1.99219C0.893695 0 0 0.905827 0 2.01923V3.68493L7.31103 9.19679C7.6666 9.46484 8.0833 9.59888 8.5 9.59888C8.9167 9.59888 9.3334 9.46488 9.68897 9.19679L17 3.68493V2.01923C17 0.905827 16.1063 0 15.0078 0ZM15.6719 3.00852L8.89635 8.11663C8.65928 8.29537 8.34072 8.29537 8.10369 8.11663L1.32812 3.00852V2.01923C1.32812 1.6481 1.62602 1.34615 1.99219 1.34615H15.0078C15.374 1.34615 15.6719 1.6481 15.6719 2.01923V3.00852ZM15.6719 6.36391L17 5.36264V11.9808C17 13.0942 16.1063 14 15.0078 14H1.99219C0.893695 14 0 13.0942 0 11.9808V5.36264L1.32812 6.36391V11.9808C1.32812 12.3519 1.62602 12.6538 1.99219 12.6538H15.0078C15.374 12.6538 15.6719 12.3519 15.6719 11.9808V6.36391Z" fill="black"></path>
+                        </svg>
+                        Создать тикет
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+<section class="exchange my_order">
+    <div class="container">
+        <div class="exchange_wrap">
+            <div class="exchange_wrap_top">
+                <div class="exchange_pay_wrap">
+                    <a href="#" class="active_link">
+                        <svg width="50" height="46" viewBox="0 0 50 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M48.0895 7.2475L17.4669 0.766906C16.1713 0.492803 14.8871 1.32867 14.613 2.62427L14.0312 6.36302L49.3646 13.8401L49.9464 10.1014C50.2205 8.80626 49.3851 7.52169 48.0895 7.2475Z" fill="black"></path>
+                            <path d="M35.2134 14.634C34.8557 13.3459 33.5096 12.5846 32.222 12.9417L26.4087 14.5555L12.7042 11.6552L11.197 18.7765L1.77993 21.3903C0.492343 21.7475 -0.269019 23.0935 0.0880914 24.3812L5.39515 43.5054C5.75284 44.7929 7.099 45.5548 8.38659 45.1972L38.8286 36.7492C40.1162 36.3915 40.8776 35.0459 40.5205 33.7577L39.6095 30.4747L43.0237 31.1965C44.3193 31.4711 45.6034 30.6353 45.8775 29.3397L48.0376 19.1323L35.7396 16.5299L35.2134 14.634ZM38.729 24.3537L39.4819 20.7955C39.595 20.2627 40.1232 19.9191 40.6559 20.0316L44.2141 20.7849C44.7474 20.898 45.091 21.4257 44.9785 21.959L44.2256 25.5172C44.1126 26.0499 43.5844 26.3941 43.0516 26.2811L39.4934 25.5282C38.9597 25.4147 38.616 24.8864 38.729 24.3537ZM2.30967 23.2987L10.7342 20.9616L30.6117 15.4455L32.7506 14.8512C32.7897 14.8406 32.8287 14.8356 32.8667 14.8356C33.0383 14.8356 33.2435 14.9482 33.3034 15.1638L33.5546 16.0683L34.3414 18.9036L3.03501 27.5912L1.99701 23.852C1.93198 23.6173 2.07511 23.3637 2.30967 23.2987ZM38.6115 34.2869C38.6515 34.432 38.6095 34.552 38.5669 34.6271C38.525 34.7021 38.4439 34.8002 38.2988 34.8402L7.85734 43.2882C7.81886 43.2987 7.77932 43.3042 7.74125 43.3042C7.56968 43.3042 7.36453 43.1911 7.30456 42.9755L4.20912 31.8207L35.5155 23.1326L37.4249 30.0124L38.6115 34.2869Z" fill="black"></path>
+                            <path d="M12.7775 35.0482C12.6315 34.523 12.0832 34.2129 11.5579 34.3584L8.00275 35.3454C7.47799 35.491 7.16737 36.0397 7.31345 36.565L8.29989 40.1197C8.44597 40.6449 8.99426 40.9551 9.51951 40.809L13.0747 39.8225C13.5999 39.6769 13.9101 39.1282 13.7645 38.6029L12.7775 35.0482Z" fill="black"></path>
+                        </svg>
+                        <span>
+                            Перевод на карту
+                        </span>
+                    </a>
+                    
+                </div>
+                <form action="/exchange/" class="exchange_pay_form">
+                    <p class="exchange_form_text">Мне нужно</p>
+                    <div class="exchange_form_box">
+                      <input class="exchange_form_input" type="text" value="{{ amount }}" name="amount">
+                        <span>руб.</span>
+                    </div>
+                    <button type="submit" class="exchange_form_btn">Применить</button>
+                </form>
+            </div>
+            <div class="exchange_wrap_bottom">
+              {% for exchange in exchanges %}
+                    <div class="exchange_item_box">
+                      <p class="exchange_item_title mob_title">{{ exchange.name }}</p>
+                        <div class="exchange_item_img">
+                          <img src="{{ exchange.image.url }}" alt="img">
+                        </div>
+                        <div class="exchange_item_info">
+                          <p class="exchange_item_title">{{ exchange.name }}</p>
+                            <div class="exchange_sm_wrap">
+                                <div class="exchange_sm_items">
+                                    <p class="exchange_sm_title">Курс обмена</p>
+                                    <p class="exchange_sm_text">1 BTC = {{ exchange.exchange_rate }} руб.</p>
+                                </div>
+                                <div class="exchange_sm_items">
+                                    <p class="exchange_sm_title">Резерв</p>
+                                    <p class="exchange_sm_text">{{ exchange.count }} BTC</p>
+                                </div>
+                                <div class="exchange_sm_items">
+                                    <p class="exchange_sm_title">Мин. обмен</p>
+                                    <p class="exchange_sm_text">{{ exchange.min_exchange }} руб.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="exchange_item_right">
+                          <p class="exchange_right_text">{% get_amount_with_commission exchange amount %} р. = <strong>{% get_btc_amount exchange amount %}</strong> BTC</p>
+                          <a href="/exchange/{{ exchange.uuid }}/?amount={{ amount }}" class="exchange_right_btn">Обменять</a>
+                        </div>
+                    </div>
+              {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

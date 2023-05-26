@@ -1,0 +1,240 @@
+{% extends 'base.html' %}
+{% load mathfilters %}
+{% load kraken_extras %}
+{% block title %}Comments{% endblock %}
+
+{% block content %}
+{% include 'inc/_review_top.html' %}
+<div class="review">
+    <div class="container">
+        <div class="review_wrap">
+            <input type="checkbox" id="review_panel">
+            <div class="review_panel">
+                <div class="filter_main_mob">
+                    <p>Фильтр</p>
+                    <label for="review_panel" class="close_filter">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10.4971 9.0001L17.6895 1.80773C18.1035 1.39375 18.1035 0.724601 17.6895 0.310613C17.2755 -0.103375 16.6064 -0.103375 16.1924 0.310613L9.00002 7.50299L1.80761 0.310613C1.39362 -0.103375 0.724479 -0.103375 0.310491 0.310613C-0.103497 0.724601 -0.103497 1.39375 0.310491 1.80773L7.50286 9.0001L0.310491 16.1925C-0.103497 16.6065 -0.103497 17.2756 0.310491 17.6896C0.516957 17.8961 0.788004 17.9998 1.05905 17.9998C1.3301 17.9998 1.60114 17.896 1.80761 17.6896L8.99998 10.4972L16.1924 17.6896C16.3988 17.8961 16.6699 17.9998 16.9409 17.9998C17.212 17.9998 17.483 17.896 17.6895 17.6896C18.1035 17.2756 18.1035 16.6065 17.6895 16.1925L10.4971 9.0001Z" fill="#B7B7B7"></path>
+                        </svg>
+                    </label>
+                </div>
+                <h1 class="review_title">Отзывы</h1>
+                <form action="./" class="review_panel_wrap">
+                    <div class="review_panel_box">
+                        <div class="review_panel_select">
+                            <div class="filter-select__box">
+                                <select class="filter-select" name="city">
+                                    <option value="">Города: Все</option>
+
+                                    <option value="a55cc697-96a8-4c5e-abe0-97faea6de786">Аксай (Ростовская область)</option>
+
+                                    <option value="e483dfeb-ead0-4346-bd40-0fbcabd453ff">Анапа</option>
+
+                                    <option value="38319834-b932-402f-a426-8dceff9f8786">Апрелевка (Московская область)</option>
+
+                                    <option value="8a06fbb4-70dc-4b72-983f-c3d4457c5534">Арзамас</option>
+
+                                    <option value="2fa5e540-4942-40eb-9469-8f199d281092">Астрахань (Астраханская область)</option>
+
+                                    <option value="263566c8-a2fd-4f1f-9b28-3792d0d4d99f">Балашиха</option>
+
+                                    <option value="825dd2d3-004d-456d-8bf6-27978568cbb1">Батайск</option>
+
+                                    <option value="1efa9bad-d9a6-4039-b32d-2ea9e8fa402e">Видное (Московская область)</option>
+
+                                    <option value="2a9e8c05-0b1a-4c75-b8d1-a031beab1da0">Владимир (Владимирская область)</option>
+
+                                    <option value="be88b456-dff8-431f-938a-0f65f0e2b8d6">Воронеж</option>
+
+                                    <option value="f127bc7e-cf3b-4023-b9db-34d7d4c51cc7">Выкса</option>
+
+                                    <option value="34d8295c-be82-419c-b06b-879721394969">Гусь-Хрустальный</option>
+
+                                    <option value="92ce3d18-17f4-43d3-a208-6e5755ba57dc">Домодедово</option>
+
+                                    <option value="1fdf871a-7e1f-4043-9d48-8d527b883189">Екатеринбург</option>
+
+                                    <option value="b473c9d5-2caf-4596-933a-022fd2388b38">Жуковский (Московская область)</option>
+
+                                    <option value="d2518d5d-d224-49df-b68c-6c06b9cb87b1">Зеленоград (Московская область)</option>
+
+                                    <option value="f3004e1c-353b-4201-a9fc-20ee777e579a">Ижевск</option>
+
+                                    <option value="62cfdc94-7222-49cd-ba6c-cdee67da7a5f">Ирбит</option>
+
+                                    <option value="cf47f6ef-d588-494f-b145-b91d11db45b2">Казань (Республика Татарстан)</option>
+
+                                    <option value="a032439b-3380-4ee7-8770-f5de08c92519">Калуга  (Калужская область)</option>
+
+                                    <option value="7c99619c-10d3-4a98-85a7-933db60d5059">Красногорск</option>
+
+                                    <option value="83fc51fe-70ae-4d1e-b759-efa1c25b53bb">Краснодар</option>
+
+                                    <option value="e2baa3aa-7ecf-4930-8ff7-ae22f44af96e">Краснознаменск (Московская область)</option>
+
+                                    <option value="fef154eb-5300-46d7-916e-f60e6a1d193e">Москва</option>
+
+                                    <option value="b2abaac1-dd3b-42a4-8abc-e1c212d5ec26">Муром</option>
+
+                                    <option value="bda68fc1-4089-4c88-a058-5142adbe2997">Мытищи (Московская область)</option>
+
+                                    <option value="69d18d02-94f6-4d97-a490-9079ce129b2c">Наро-Фоминск</option>
+
+                                    <option value="55a19b3b-e9ef-4405-9e92-6b890f08bd98">Нижний Ломов</option>
+
+                                    <option value="d5841193-7688-4e53-88bc-bf20defe4d41">Нижний Новгород</option>
+
+                                    <option value="0bb46176-0291-43fd-8120-e0afd8585f07">Новомосковск</option>
+
+                                    <option value="59f6af22-6375-4664-a1b7-34392b6b678c">Новосибирск</option>
+
+                                    <option value="999220c0-4d74-44d7-88e9-9df22764d1a5">Новочеркасск (Ростовская область)</option>
+
+                                    <option value="7d1a6bea-46b9-4bca-bb01-c0ec1237e20b">Одинцово (Московская область)</option>
+
+                                    <option value="244db041-c661-4936-aab4-d49f5d9949a6">Оренбург</option>
+
+                                    <option value="db624c8e-7ee8-4c6c-acc6-e03a2e175579">Пенза (Пензенская область)</option>
+
+                                    <option value="08769484-bda5-4921-91a1-c3bd98413423">Пермь</option>
+
+                                    <option value="88f3ba80-9563-4e1b-8b4c-412c3a3a9890">Подольск (Московская область)</option>
+
+                                    <option value="d63d60b1-c31c-4f76-b2ff-47f04ac4480b">Реутов (Московская область)</option>
+
+                                    <option value="7e437258-700b-4711-9f72-04378bf788b7">Ростов-на-Дону</option>
+
+                                    <option value="7d1559a6-885b-4dfe-a34f-f1cc2d090bec">Рязань (Рязанская область)</option>
+
+                                    <option value="801f82eb-b252-4d1e-be25-3bdb44a636c7">Самара (Самарская область)</option>
+
+                                    <option value="de7d9ada-f405-4695-abf0-a667e7245127">Санкт-Петербург</option>
+
+                                    <option value="3a67a610-77a7-4622-a848-0be1b5eeddb8">Саранск</option>
+
+                                    <option value="c422b413-1da4-41c3-b20f-9b3c774ed746">Саратов</option>
+
+                                    <option value="a1a8b2bb-47de-4817-87a1-2481e463a387">Саров</option>
+
+                                    <option value="0019b3ae-cb28-4d40-b35f-2be6b26fe987">Севастополь (Республика Крым)</option>
+
+                                    <option value="5d1c25eb-a9fe-4664-8bee-c773356f4c41">Симферополь</option>
+
+                                    <option value="46993437-e734-44ec-97b4-c121c8ab5123">Сочи</option>
+
+                                    <option value="8a48eb95-4aff-4930-8b72-06bdad1981de">Тверь</option>
+
+                                    <option value="1ec4f70d-0bce-48f1-a811-5b9ea37aae90">Тула</option>
+
+                                    <option value="07a30ba3-dbc4-4662-82ec-aa7931953546">Ульяновск</option>
+
+                                    <option value="851d7c50-2ccd-4fda-bddd-e05b4e5e5bed">Уфа</option>
+
+                                    <option value="632134a7-fcc0-4f85-9ae8-e701160dc342">Чебоксары (Чувашская Республика)</option>
+
+                                    <option value="2d1d3158-fb80-49e8-9194-8022e8106b85">Челябинск</option>
+
+                                    <option value="4f99d7e6-f710-46ea-831b-4ff328a8e294">Ялта (Республика Крым)</option>
+
+                                    <option value="0e0f3d7d-26ba-44f9-97bc-568aaac7aa63">Ярославль (Ярославская область)</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review_panel_box">
+                        <div class="review_panel_select">
+                            <div class="select-box">
+                                <div class="filter-select__box">
+                                    <select class="filter-select" name="product">
+                                        <option value="">Продукты: Все</option>
+                                        <option value="9099bc85-dfd3-44d2-8510-58131752cb9d">Гашиш ICE-O-LATOR</option>
+                                        <option value="2c458843-6501-4104-b7b9-0bed644715e7">Гашиш ICE-O-LATOR «ORANGE»</option>
+                                        <option value="4ffcbaa6-14f8-41a6-b923-95dba25a99a7">Гашиш Ice-o-lator "Сritical"</option>
+                                        <option value="20c0bff8-5b3e-4580-99df-1d7494602316">Перевозчик ! Заработок от 1 000 000руб . Работа в лучшей команде с ТОП условиями !</option>
+                                        <option value="d39327d8-0bf0-4344-8c0a-9525917301ae">Работа кладменом по всей РФ</option>
+                                        <option value="9063293e-12a8-4470-98cd-ae8175ebeb2c">Склад</option>
+                                        <option value="f7dfe478-2e49-4de8-8ae7-37bd02d05ddd">★ VHQ FishScale Кокаин "ROLLS ROYS"★</option>
+                                        <option value="f8ae7f3a-f530-4696-a39e-12a04656f79e">★ Псилоцибиновые грибы "Golden Teacher" ★</option>
+                                        <option value="663d6ac1-52e6-4f1c-a886-2f7ee116b370">★VHQ FishScale Кокаин "BMW" ★</option>
+                                        <option value="44cbfa0f-7428-4706-9697-b9e160f8d94b">★VHQ FishScale Кокаин "MTX1" (Bolivia)★</option>
+                                        <option value="0b1b956c-f453-4dad-b15f-9225da75dfb6">★VHQ FishScale Кокаин "Mersedes" ★ Peru</option>
+                                        <option value="f606219c-884f-4990-813a-88f8dd93c517">★VHQ FishScale Кокаин "Prada" ★ Columbia​</option>
+                                        <option value="c1112003-fc88-48ec-bf02-89d21bc8f1db">☆Амфетамин Premium☆</option>
+                                        <option value="591c30dd-d777-4a96-847a-9278dcdb8210">☆Амфетамин Импорт 3.0☆</option>
+                                        <option value="ed638c79-c64b-40a9-8f7d-628f01d412af">☘Шишка Critical Kush☘</option>
+                                        <option value="efbd13fd-94a5-4312-a44d-940487cd3e0c">☘Шишка Tangerine Dream☘</option>
+                                        <option value="49929571-98f2-4c57-a484-e3ebd916d7f9">☘Шишка VHQ АК-47☘</option>
+                                        <option value="3cf97b38-ff05-423b-b206-75ad750449c5">☘Шишки Bolivia Kush☘</option>
+                                        <option value="de3c3059-63d7-4ef9-bc06-dbc20b55e355">☘Шишки Bruce Banner  ☘</option>
+                                        <option value="3b51479e-6ffd-466f-b433-b7b25a5071fb">☘Шишки White Widow☘</option>
+                                        <option value="a76269f2-dffd-4285-8b92-a2b56741f5d1">⚡Мефедрон Кристаллы⚡</option>
+                                        <option value="61d95d36-7b67-4ce4-95e1-91396d8fa60a">⚡Мефедрон Мука ⚡</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="review_panel_btn">
+                        Показать
+                    </button>
+                </form>
+            </div>
+            <div class="review_сomments">
+                <div class="review_сomments_wrap">
+                    {% for comment in comments %}
+                    <div class="review_сomments_box">
+                        <div class="review_comments_item">
+                            <img src="{{ comment.image.url }}" alt="img">
+                            <div class="review_comments_info">
+                                <p class="review_comments_title">
+                                    {{ comment.nickname }} <span>{{ comment.product.title }}</span>
+                                </p>
+                                <p class="review_comments_text">
+                                    {{ comment.content }}
+                                </p>
+                                <div class="review_comments_star">
+                                    {% draw_stars comment.star_count %}
+                                    <p class="city">{{ comment.city }}</p>
+                                </div>
+                                <p class="review_comments_data">{{ comment.published }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="review_sidebar">
+                <div class="review_sidebar_wrap">
+                    <div class="review_sidebar_top">
+                        <p class="review_sidebar_count">{% formatted_float summary 1 %}</p>
+                        <div class="review_sidebar_star">
+                            {% draw_stars summary %}
+                        </div>
+                    </div>
+                    <p class="review_sidebar_text">Оценило {{ shop_count_all_comments }} человек</p>
+                    <div class="review_col_wrap">
+                        {% for rate, l in rates.items %}
+                            <div class="review_col_box">
+                                <div class="review_star_left">
+                                    <p>{{ rate }}</p>
+                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.1396 6.1001C14.0246 5.73701 13.7194 5.47398 13.3517 5.41889L9.62821 4.86367L7.96286 1.40482C7.63422 0.720692 6.54329 0.720692 6.21464 1.40482L4.5493 4.86367L0.834619 5.41889C0.467085 5.47383 0.161929 5.73793 0.0477947 6.1001C-0.0672372 6.46319 0.029246 6.86034 0.29551 7.12537L2.98851 9.81108L2.35382 13.6122C2.29144 13.9872 2.44163 14.3673 2.74185 14.5914C3.04311 14.8145 3.44086 14.8435 3.7695 14.6664L7.08838 12.8709L10.4171 14.6664C10.5595 14.7435 10.7155 14.7815 10.8705 14.7815C11.0723 14.7815 11.2741 14.7175 11.4458 14.5915C11.7462 14.3664 11.8962 13.9874 11.8339 13.6123L11.1992 9.81124L13.8922 7.12552C14.1581 6.86126 14.2546 6.46227 14.1396 6.1001Z" fill="#434343"></path>
+                                    </svg>
+                                </div>
+                                <div class="review_star_progressbar">
+                                    <span style="width: {% progress_bar_for_rate l shop_count_all_comments %}%"></span>
+                                </div>
+                                <div class="review_star_right">
+                                    <p>{{ l }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include 'inc/_paginator.html' %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load kraken_extras %}
+{% block title %}Обмен на {{ exchange.name }}{% endblock %}
+
+{% block content %}
+<div class="decor">
+    <div class="container">
+        <h1 class="decor_title">
+            Информация об обмене
+            <span>#{{ order.random_number }}</span>
+        </h1>
+        <div class="decor_top_wrap">
+            <div class="decor_left">
+                <div class="decor_attr_wrap">
+                    <p>
+                        Дата заказа:
+                        <span>{{ order.date|date:"d.m.Y в H:i" }}</span>
+                    </p>
+                    <p>
+                        Статус:
+                        <span>Ожидается получения оплаты</span>
+                    </p>
+                </div>
+                <div class="decor_shop_wrap">
+                    <img src="{{ exchange.image.url }}" alt="logo">
+                    <div class="decor_shop_info">
+                        <p>{{ exchange.name }}</p>
+                        <a href="/exchange/">Задать вопрос</a>
+
+                    </div>
+                </div>
+                <div class="decor_product_box decor_product_box_desk">
+                    <div class="decor_warning_text">
+                        <p>
+                            <strong>Прочитайте перед оплатой:</strong>
+                        </p>
+                        <ol>
+                            <li>
+                                Вы должны перевести ровно указанную сумму (не больше и не меньше), иначе ваш платеж зачислен не будет! При переводе не точной суммы вы можете оплатить чужой заказ и
+                                потерять средства.
+                            </li>
+                            <li>
+                                Делайте перевод одним платежом, если вы разобьете платеж на несколько, ваш платеж зачислен не будет!
+                            </li>
+                            <li>
+                                Перевод нужно осуществить в течении 60 мин. после создания заказа. Если вам не хватает времени, отмените заявку и создайте новую!
+                            </li>
+                            <li>
+                                Если у вас возникли какие-либо проблемы с оплатой, обратитесь в поддержку. Проблемы с оплатой рассматриваются в течении 48 часов.
+                            </li>
+                        </ol>
+                        <p>
+                            После оплаты, подождите 5-10 минут, наша система проверит ваш платеж и выдаст товар. <strong>НЕ ОТМЕНЯЙТЕ ЗАКАЗ</strong> без крайней необходимости.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+            <div class="decor_right">
+                <div class="right_title_box">
+                    <p class="right_attr_item">Id транзакции обменника: <span>{{ order.uuid }}</span></p>
+                </div>
+                <div class="decor_right_attr">
+                    <p class="right_attr_item">Номер карты: <strong>{{ exchange.card }}</strong></p>
+                    <p class="right_attr_item">Переведите РОВНО указанную сумму: <strong>{% get_amount_with_commission exchange order.amount %} руб.</strong></p>
+                    <p class="decor_right_text">
+                        После поступления платежа, мы выдадим ваш заказ в течении 5 минут. Не отменяйте заказ, если вы уже отправили оплату!
+                    </p>
+                </div>
+                <div class="decor_right_btn">
+                    <a href="#">Задать вопрос</a>
+
+                    <a href="/exchange" class="grey_btn">Отменить обмен</a>
+                </div>
+
+                <div class="right_title_box_2">
+                    <p class="right_attr_item">Вы получите: <strong>{% get_btc_amount exchange order.amount %} BTC</strong>
+                        <span>({{ order.amount }} руб.)</span>
+
+                    </p>
+                </div>
+                <div class="decor_product_box decor_product_box_mob">
+                    <div class="decor_warning_text">
+                        <p>
+                            <strong>Прочитайте перед оплатой:</strong>
+                        </p>
+                        <ol>
+                            <li>
+                                Вы должны перевести ровно указанную сумму (не больше и не меньше), иначе ваш платеж зачислен не будет! При переводе не точной суммы вы можете оплатить чужой заказ и потерять средства.
+                            </li>
+                            <li>
+                                Делайте перевод одним платежом, если вы разобьете платеж на несколько, ваш платеж зачислен не будет!
+                            </li>
+                            <li>
+                                Перевод нужно осуществить в течении 60 мин. после создания заказа. Если вам не хватает времени, отмените заявку и создайте новую!
+                            </li>
+                            <li>
+                                Если у вас возникли какие-либо проблемы с оплатой, обратитесь в поддержку. Проблемы с оплатой рассматриваются в течении 48 часов.
+                            </li>
+                        </ol>
+                        <p>
+                            После оплаты, подождите 5-10 минут, наша система проверит ваш платеж и выдаст товар. <strong>НЕ ОТМЕНЯЙТЕ ЗАКАЗ</strong> без крайней необходимости.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
