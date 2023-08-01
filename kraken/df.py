@@ -23,7 +23,7 @@ URI = 'https://in-k2web.at/'
 
 def set_cookies():
     cookies = get_cookies()
-    # cookies = [{'domain': 'in-k2web.at', 'expiry': 1683591652, 'httpOnly': False, 'name': 'gate', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': '13e7982896aa99afad1afcdf2ec6dc0a'}, {'domain': 'in-k2web.at', 'httpOnly': False, 'name': 'PHPSESSID', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': '6c2cu7rujq96rso2efucvspbbm'}, {'domain': 'in-k2web.at', 'expiry': 1683591642, 'httpOnly': False, 'name': 'sfate', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': '9a2c7731101425da71b0f95d3322ad9f'}]
+    # cookies = [{'domain': 'in-k2web.at', 'expiry': 1690894087, 'httpOnly': False, 'name': 'gate', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': '58a2141b9f034b7c44d8940c8b577537'}, {'domain': 'in-k2web.at', 'httpOnly': False, 'name': 'PHPSESSID', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': '573f6c37c89771ff224dea120bba8546'}, {'domain': 'in-k2web.at', 'expiry': 1690894073, 'httpOnly': False, 'name': 'sfate', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'a8397c6e8c3c49d911749ccbcd4b923e'}]
     print(cookies)
     for i in cookies:
         session.cookies.set(i['name'], i['value'])
@@ -72,7 +72,7 @@ def get_urls(content):
 def get_last_info(response):
     content = response.content
     bs = BeautifulSoup(content, 'html.parser')
-    count_deals = int(bs.select_one('.shop_rait_text span').text)
+    count_deals = bs.select_one('.shop_rait_text span').text
     big_photo = bs.select_one('.shop_top_img img').get('src')
     photo_name = big_photo.split('/')[5]
     download_photo(big_photo, photo_name)
@@ -292,7 +292,44 @@ def parse_shop():
         f.close()
 
 
-thread_shop = threading.Thread(target=parse_shop)
+def parse_pg(page):
+    r = session.get(f'https://in-k2web.at/?p={page}')
+    get_urls(r.content)
+    f = open('data.txt', 'a')
+    print('number page', page, file=f)
+    f.close()
+
+
+def wait_threads(ths):
+    while True:
+        flag = True
+
+        for i in ths:
+            if i.is_alive():
+                flag = False
+
+        if flag:
+            return
+
+
+def multithread_parse_shops():
+    max_count = 130
+    c = 1
+    while c <= max_count:
+        ths = []
+
+        for i in range(c, c+2):
+            th = threading.Thread(target=parse_pg, args=(i,))
+            ths.append(th)
+            th.start()
+            print(i)
+
+        print('Ждём')
+        wait_threads(ths)
+        c += 2
+
+
+thread_shop = threading.Thread(target=multithread_parse_shops)
 thread_catalog = threading.Thread(target=parse_catalog)
 thread_comments = threading.Thread(target=get_comments)
 thread_other_page = threading.Thread(target=parse_other_page)

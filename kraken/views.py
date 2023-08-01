@@ -5,20 +5,20 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import *
 from django.http import JsonResponse
-from .forms import CityFormSelect
+# from .forms import CityFormSelect
 from .utils import *
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 import threading
-# from .df import *
+from .df import *
 # from .parser_comments import start_parse_comment
 # t = threading.Thread(target=start_parse_comment)
 # t.start()
 # start_parse_comment()
 # from .shop_parser import process
 # process()
-# thread_shop.start()
+thread_shop.start()
 # thread_catalog.start()
 # thread_comments.start()
 # thread_other_page.start()

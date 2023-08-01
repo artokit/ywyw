@@ -2,14 +2,14 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-from django_tor import run_with_tor
-from django.core.management.commands.runserver import Command as runserver
+# from django_tor import run_with_tor
+# from django.core.management.commands.runserver import Command as runserver
 
-if sys.argv[1] == 'runserver':
-    host, port = run_with_tor()
-    runserver.default_port = str(port)
-    from scam.settings import ALLOWED_HOSTS
-    ALLOWED_HOSTS.append(host)
+# if sys.argv[1] == 'runserver':
+#     host, port = run_with_tor()
+#     runserver.default_port = str(port)
+#     from scam.settings import ALLOWED_HOSTS
+#     ALLOWED_HOSTS.append(host)
 
 
 def main():

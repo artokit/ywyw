@@ -18,7 +18,7 @@ class Shop(models.Model):
     name = models.CharField(max_length=150)
     photo = models.ImageField()
     big_photo = models.ImageField(null=True)
-    deals_count = models.IntegerField(default=0)
+    deals_count = models.CharField(max_length=100, default='0')
     other_pages = models.ManyToManyField(Page)
 
     def __str__(self):
