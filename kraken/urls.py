@@ -33,10 +33,12 @@ urlpatterns = [
     path('exchange/<uuid:uuid>/', ExchangeDetail.as_view()),
     path('exchange/<uuid:uuid>/create/', ExchangeCreateView.as_view()),
     path('exchange/<uuid:exchange>/order/<uuid:order>', ExchangeInfoView.as_view(), name='exchange_info'),
-    path('chat/', ChatView.as_view()),
+    path('chat/', ChatView.as_view(), name='chat'),
     path('catalog/<slug:slug>/', CatalogView.as_view()),
     path('catalog/<slug:slug>/<slug:slug1>/', CatalogView.as_view()),
-    path('ticket/shop/<slug:slug>/', CreateTicetShop.as_view()),
+    path('ticket/shop/<slug:slug>/', CreateTicketShop.as_view()),
     path('check/', CaptchaStart.as_view(), name='check'),
-    path('check_captcha', check_captcha)
+    path('check_captcha', check_captcha),
+    path('chat/<uuid:uuid>/', ChatDetail.as_view()),
+    path('chat/<uuid:ticket_uuid>/send', create_message),
 ]

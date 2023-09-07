@@ -1,4 +1,5 @@
 import random
+from django.contrib.auth.models import User
 from django.db import models
 import uuid
 
@@ -190,3 +191,23 @@ class ExchangeInfo(models.Model):
 
     def __str__(self):
         return self.random_number
+
+
+class Message(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField()
+    image = models.ImageField(null=True, blank=True)
+    data = models.DateTimeField(auto_now=True, auto_created=True)
+
+
+class Ticket(models.Model):
+    uuid = models.UUIDField(default=uuid.uuid4, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    shop = models.ForeignKey(Shop, on_delete=models.CASCADE)
+    title = models.TextField(verbose_name='Тема')
+    # content = models.TextField(verbose_name='Содержание тикета')
+    date = models.DateTimeField(auto_now=True, auto_created=True)
+    messages = models.ManyToManyField(Message)
+
+    def __str__(self):
+        return f"{self.shop.name} - {self.title}"

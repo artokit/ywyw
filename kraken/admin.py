@@ -16,4 +16,5 @@ admin.site.register(UserData)
 admin.site.register(City)
 admin.site.register(Exchange)
 admin.site.register(ExchangeInfo)
-
+admin.site.register(Ticket)
+admin.site.register(Message)

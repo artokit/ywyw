@@ -287,7 +287,7 @@ def parse_shop():
         r = session.get(f'https://in-k2web.at/?p={page_num}')
         page_num += 1
         get_urls(r.content)
-        f = open('data.txt', 'a')
+        f = open('shop.txt', 'a')
         print('Страница номер', page_num, file=f)
         f.close()
 

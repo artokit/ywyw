@@ -1,0 +1,37 @@
+<div class="messenger_left">
+    <form action="/chat/" class="messenger_search_wrap" method="get">
+        <input type="text" placeholder="Поиск" name="q" value="">
+        <button type="submit">Найти</button>
+    </form>
+    <div class="messenger_user_wrap chat_rooms">
+        {% for ticket in tickets %}
+        <a href="/chat/{{ ticket.uuid }}/?roomsCount=20&amp;q="
+           {% if request.resolver_match.kwargs.uuid|stringformat:"s" == ticket.uuid|stringformat:"s" %}
+           class="messenger_user_item active_messages"
+           {% else %}
+           class="messenger_user_item"
+           {% endif %}
+        >
+            <img src="{{ ticket.shop.photo.url }}" alt="user">
+            <div class="messenger_user_info">
+                <div class="messenger_user_data">
+
+                    <p>{{ ticket.date|date:"Y-m-d" }}</p>
+                </div>
+                <p class="user_info_title">{{ ticket.title }}</p>
+
+                <p class="user_info_text">
+                    <span class="regular_nick_name">{{ request.user.first_name }}, </span>
+                    <span class="regular_nick_name">Администратор, </span>
+                    <span class="regular_nick_name">{{ ticket.shop.name }}, </span>
+                    <span class="regular_nick_name">Сотрудники {{ ticket.shop.name }}, </span>
+                    <span class="regular_nick_name">Управляющий</span>
+
+                </p>
+            </div>
+        </a>
+        {% endfor %}
+
+
+    </div>
+</div>

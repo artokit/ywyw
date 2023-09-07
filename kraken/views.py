@@ -5,20 +5,20 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import *
 from django.http import JsonResponse
-# from .forms import CityFormSelect
+from .forms import CityFormSelect
 from .utils import *
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 import threading
-from .df import *
+# from .df import *
 # from .parser_comments import start_parse_comment
 # t = threading.Thread(target=start_parse_comment)
 # t.start()
 # start_parse_comment()
 # from .shop_parser import process
 # process()
-thread_shop.start()
+# thread_shop.start()
 # thread_catalog.start()
 # thread_comments.start()
 # thread_other_page.start()
@@ -375,6 +375,24 @@ class ExchangeView(LoginRequiredMixin, ExchangeAmountMixin, ListView):
 class ChatView(LoginRequiredMixin, TemplateView):
     template_name = 'kraken/chat.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tickets'] = Ticket.objects.filter(user=self.request.user)
+        return context
+
+
+class ChatDetail(LoginRequiredMixin, TemplateView):
+    template_name = 'kraken/chat_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tickets'] = Ticket.objects.filter(user=self.request.user)
+        context['shops'] = [i.shop for i in context['tickets']]
+        context['user_data'] = UserData.objects.get(login=self.request.user.username)
+        context['current_ticket'] = Ticket.objects.get(uuid=kwargs['uuid'])
+        context['user_messages'] = context['current_ticket'].messages.filter(user=self.request.user)[::-1]
+        return context
+
 
 class ExchangeDetail(LoginRequiredMixin, ExchangeAmountMixin, DetailView):
     model = Exchange
@@ -419,14 +437,21 @@ class ExchangeInfoView(LoginRequiredMixin, ExchangeAmountMixin, DetailView):
         return context
 
 
-class CreateTicetShop(LoginRequiredMixin, FormView):
+class CreateTicketShop(LoginRequiredMixin, FormView):
     template_name = 'kraken/shop_ticket.html'
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
 
     def post(self, request, *args, **kwargs):
-        return redirect('/ticket/admin/')
+        shop = Shop.objects.get(uuid=kwargs['slug'])
+        t = Ticket(user=self.request.user, shop=shop, title=request.POST['title'])
+        t.save()
+        m = Message(user=self.request.user, text=request.POST['message'])
+        m.save()
+        t.messages.add(m)
+        t.save()
+        return redirect('/chat')
 
 
 class CaptchaStart(TemplateView):
@@ -455,3 +480,12 @@ def jquery_get(request):
 def logout_request(request):
     logout(request)
     return redirect(reverse('login'))
+
+
+def create_message(request, ticket_uuid):
+    ticket = Ticket.objects.get(uuid=ticket_uuid)
+    m = Message(user=request.user, text=request.POST['message'])
+    m.save()
+    ticket.messages.add(m)
+    ticket.save()
+    return redirect('/chat')
